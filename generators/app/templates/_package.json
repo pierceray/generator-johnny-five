@@ -1,0 +1,6 @@
+{
+  "name": "<%= appname ? appname : 'Project Name' %>",
+  "version": "0.1.0",
+  "dependencies": {
+  }
+}
