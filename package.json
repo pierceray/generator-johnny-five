@@ -1,8 +1,11 @@
 {
   "name": "generator-johnny-five",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Yeoman generator that scaffolds out a Johnny-Five project",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pierceray/generator-johnny-five/issues"
+  },
   "main": "generators/index.js",
   "repository": {
     "type": "git",
