@@ -58,9 +58,14 @@ module.exports = generators.Base.extend({
 					appname: this.appname
 				}
 			);
-			this.fs.copy(
+
+			this.fs.copyTpl(
 				this.templatePath('_index.js'),
-				this.destinationPath('index.js')
+				this.destinationPath('index.js'),
+				{
+					includeNodePixel: this.includeNodePixel,
+					includeBarcli: this.includeBarcli
+				}
 			);
 		},
 
