@@ -1,5 +1,5 @@
 {
-  "name": "<%= appname ? appname : 'Project Name' %>",
+  "name": "<%= appname ? appname : 'projectName' %>",
   "version": "0.1.0",
   "dependencies": {
   }

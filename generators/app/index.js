@@ -55,7 +55,7 @@ module.exports = generators.Base.extend({
 				this.templatePath('_package.json'),
 				this.destinationPath('package.json'),
 				{
-					appname: this.appname
+					appname: this.appname.replace(/\s+/g, '')
 				}
 			);
 
