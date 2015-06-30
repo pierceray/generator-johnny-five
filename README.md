@@ -1,4 +1,4 @@
-# generator-johnny-five 
+# generator-johnny-five
 
 [![Join the chat at https://gitter.im/pierceray/generator-johnny-five](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pierceray/generator-johnny-five?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -8,10 +8,10 @@
 * Johnny-Five project file creation
 * `.jshintrc` from the Johnny-Five project
 * `package.json` creation and dependency additions
+* Configurations for Particle and Raspberry Pi
 * Optional Library Installs
 	* barcli
 	* node-pixel
-
 
 ## Getting Started
 
