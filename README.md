@@ -1,5 +1,7 @@
 # generator-johnny-five 
 
+[![Join the chat at https://gitter.im/pierceray/generator-johnny-five](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pierceray/generator-johnny-five?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > [Yeoman](http://yeoman.io) generator that scaffolds out a [Johnny-Five](http://johnny-five.io) project
 
 ## Features
