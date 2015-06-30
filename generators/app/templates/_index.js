@@ -1,5 +1,14 @@
 var five = require("johnny-five");
-var board = new five.Board();
+<% if ( useParticle ) { %>var board = new five.Board({
+  io: new Spark({
+    token: process.env.SPARK_TOKEN,
+    deviceId: process.env.SPARK_DEVICE_ID
+  });
+});<% } else if ( useRasPi ) { %>var board = new five.Board({
+  io: new Raspi()
+});<% } else {
+%>var board = new five.Board();<% } %>
+
 <% if ( includeNodePixel ){ %>var pixel = require("node-pixel");<% } %>
 <% if ( includeBarcli ) { %>var barcli = require("barcli");<% } %>
 
