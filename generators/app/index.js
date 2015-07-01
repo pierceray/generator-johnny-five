@@ -53,19 +53,15 @@ module.exports = generators.Base.extend({
 		}];
 
 		this.prompt(prompts, function (answers) {
-			console.log(answers);
 			var features = answers.features;
-			this.pkgJsonName = _s.slugify(this.appname);
 
-			function hasFeature(feat) {
-				return features && features.indexOf(feat) !== -1;
-			};
-			console.log(hasFeature('useParticle'));
-			this.licenseType = answers.licenseType;
-			this.useParticle = answers.useParticle;
-			this.useRasPi = answers.useRasPi;
-			this.includeNodePixel = hasFeature('includeNodePixel');
-			this.includeBarcli = hasFeature('includeBarcli');
+			for (var name in answers) {
+				if (answers.hasOwnProperty(name)){
+					this[name] = answers[name];
+				}
+			}
+
+			this.pkgJsonName = _s.slugify(this.appname);
 
 			done();
 		}.bind(this));

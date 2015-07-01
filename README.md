@@ -8,7 +8,7 @@
 * Johnny-Five project file creation
 * `.jshintrc` from the Johnny-Five project
 * `package.json` creation and dependency additions
-* Configurations for Particle and Raspberry Pi
+* Preset configurations for Particle and Raspberry Pi
 * Optional Library Installs
 	* barcli
 	* node-pixel
