@@ -40,26 +40,36 @@ module.exports = generators.Base.extend({
 			message: 'What additional libraries would you like installed?',
 			choices: [
 				{
+					name: 'barcli',
+					value: 'includeBarcli',
+					checked: false
+				},
+				{
 					name: 'nodepixel',
 					value: 'includeNodePixel',
 					checked: false
-				}
-				,{
-					name: 'barcli',
-					value: 'includeBarcli',
+				},
+				{
+					name: 'oled-js',
+					value: 'includeOledJS',
 					checked: false
 				}
 			]
 		}];
 
-		this.prompt(prompts, function (answers) {
+		this.prompt(prompts, function ( answers ) {
 			var features = answers.features;
 
-			for (var name in answers) {
-				if (answers.hasOwnProperty(name)){
-					this[name] = answers[name];
-				}
-			}
+			function hasFeature(feat) {
+				return features && features.indexOf(feat) !== -1;
+			};
+
+			this.licenseType = answers.licenseType;
+			this.useParticle = answers.useParticle;
+			this.useRasPi = answers.useRasPi;
+			this.includeNodePixel = hasFeature('includeNodePixel');
+			this.includeBarcli = hasFeature('includeBarcli');
+			this.includeOledJS = hasFeature('includeOledJS');
 
 			this.pkgJsonName = _s.slugify(this.appname);
 
@@ -87,6 +97,10 @@ module.exports = generators.Base.extend({
 
 		if(this.includeBarcli){
 			moduleArray.push('barcli');
+		}
+
+		if(this.includeOledJS){
+			moduleArray.push('oled-js');
 		}
 
 		this.npmInstall(moduleArray.join(' '), { 'save': true });

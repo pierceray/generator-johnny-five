@@ -3,6 +3,10 @@
   "description": "<%= appname %> a Johnny-Five project",
   "version": "0.1.0",
   "license": "<%= licenseType %>",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
   "dependencies": {
   }
 }
