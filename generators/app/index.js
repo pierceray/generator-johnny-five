@@ -45,6 +45,11 @@ module.exports = generators.Base.extend({
 					checked: false
 				},
 				{
+					name: 'j5-songs',
+					value: 'includej5Songs',
+					checked: false
+				},
+				{
 					name: 'nodepixel',
 					value: 'includeNodePixel',
 					checked: false
@@ -67,8 +72,9 @@ module.exports = generators.Base.extend({
 			this.licenseType = answers.licenseType;
 			this.useParticle = answers.useParticle;
 			this.useRasPi = answers.useRasPi;
-			this.includeNodePixel = hasFeature('includeNodePixel');
 			this.includeBarcli = hasFeature('includeBarcli');
+			this.includej5Songs = hasFeature('includej5Songs');
+			this.includeNodePixel = hasFeature('includeNodePixel');
 			this.includeOledJS = hasFeature('includeOledJS');
 
 			this.pkgJsonName = _s.slugify(this.appname);
@@ -91,8 +97,13 @@ module.exports = generators.Base.extend({
 	install: function () {
 
 		var moduleArray = ['johnny-five'];
+
 		if(this.includeNodePixel){
 			moduleArray.push('node-pixel');
+		}
+
+		if(this.includej5Songs){
+			moduleArray.push('j5-songs');
 		}
 
 		if(this.includeBarcli){
