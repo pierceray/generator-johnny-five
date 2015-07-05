@@ -1,6 +1,6 @@
 {
   "name": "generator-johnny-five",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "description": "Yeoman generator that scaffolds out a Johnny-Five project",
   "license": "MIT",
   "bugs": {
@@ -22,7 +22,10 @@
   "keywords": [
     "yeoman-generator",
     "johnny-five",
-    "nodebots"
+    "nodebots",
+    "barcli",
+    "node-pixel",
+    "oled-js"
   ],
   "dependencies": {
     "chalk": "^1.1.0",
@@ -31,10 +34,8 @@
     "yosay": "^1.0.4"
   },
   "homepage": "https://github.com/pierceray/generator-johnny-five",
-  "maintainers": [
-    {
-      "name": "pierceray",
-      "email": "ray@digitalpierce.com"
-    }
-  ]
+  "maintainers": [{
+    "name": "pierceray",
+    "email": "ray@digitalpierce.com"
+  }]
 }
