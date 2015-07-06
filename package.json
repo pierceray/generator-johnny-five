@@ -1,6 +1,6 @@
 {
   "name": "generator-johnny-five",
-  "version": "0.1.0-alpha.9",
+  "version": "0.1.0",
   "description": "Yeoman generator that scaffolds out a Johnny-Five project",
   "license": "MIT",
   "bugs": {
@@ -23,6 +23,9 @@
     "yeoman-generator",
     "johnny-five",
     "nodebots",
+    "arduino",
+    "raspi",
+    "particle",
     "barcli",
     "node-pixel",
     "oled-js"
