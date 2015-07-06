@@ -5,13 +5,15 @@
 > [Yeoman](http://yeoman.io) generator that scaffolds out a [Johnny-Five](http://johnny-five.io) project
 
 ## Features
-* Johnny-Five project file creation
+* [Johnny-Five](http://johnny-five.io) project file creation
 * `.jshintrc` from the Johnny-Five project
 * `package.json` creation and dependency additions
-* Preset configurations for Particle and Raspberry Pi
+* Preset configurations for [Particle](https://www.particle.io/) and Raspberry Pi
 * Optional Library Installs
-	* barcli
-	* node-pixel
+	* [barcli](https://github.com/dtex/barcli)
+	* [j5-songs](https://github.com/julianduque/j5-songs)
+	* [node-pixel](https://github.com/ajfisher/node-pixel)
+	* [oled-js](https://github.com/noopkat/oled-js)
 
 ## Getting Started
 

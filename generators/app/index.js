@@ -65,7 +65,7 @@ module.exports = generators.Base.extend({
 
 			function hasFeature(feat) {
 				return features && features.indexOf(feat) !== -1;
-			};
+			}
 
 			this.licenseType = answers.licenseType;
 			this.projectType = answers.projectType;
