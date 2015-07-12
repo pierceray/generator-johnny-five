@@ -1,6 +1,6 @@
 {
   "name": "generator-johnny-five",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Yeoman generator that scaffolds out a Johnny-Five project",
   "license": "MIT",
   "bugs": {
@@ -43,6 +43,9 @@
       "email": "ray@digitalpierce.com"
     }
   ],
+  "scripts": {
+    "test": "grunt lint"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
