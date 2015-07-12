@@ -1,4 +1,5 @@
 .gitignore
 .jshintrc
+.travis.yml
 Gruntfile.js
 grunt/
