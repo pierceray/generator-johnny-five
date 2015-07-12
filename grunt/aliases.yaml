@@ -1,0 +1,13 @@
+default:
+    - 'lint'
+
+lint:
+    description: 'Runs the JSBeautifier and JSHint tasks.'
+    tasks:
+    - 'jshint'
+    - 'jsbeautifier:verify'
+
+test:
+    description: 'Do all the things to prevent the code from breaking.'
+    tasks:
+    - 'lint'
