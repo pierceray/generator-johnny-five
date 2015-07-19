@@ -54,6 +54,17 @@ module.exports = generators.Base.extend({
         checked: false
       }]
     }, {
+      type: 'list',
+      name: 'testing',
+      message: 'What type of unit testing would you like to use?',
+      choices: [{
+        name: 'none',
+        value: 'includeNone'
+      }, {
+        name: 'NodeUnit',
+        value: 'includeNodeUnit'
+      }]
+    }, {
       type: 'string',
       name: 'licenseType',
       message: 'What type of license should this project have?',
@@ -73,6 +84,7 @@ module.exports = generators.Base.extend({
       this.includej5Songs = hasFeature('includej5Songs');
       this.includeNodePixel = hasFeature('includeNodePixel');
       this.includeOledJS = hasFeature('includeOledJS');
+      this.testing = answers.testing;
 
       this.pkgJsonName = _s.slugify(this.appname);
 
@@ -88,12 +100,19 @@ module.exports = generators.Base.extend({
 
     projectfiles: function() {
       this.copy('jshintrc', '.jshintrc');
+    },
+
+    testing: function() {
+      if (this.testing === 'includeNodeUnit') {
+        this.copy('_nodeunittests.js', 'test/' + this.pkgJsonName + '-tests.js');
+      }
     }
   },
 
   install: function() {
 
     var moduleArray = ['johnny-five'];
+    var devModuleArray = [];
 
     if (this.includeNodePixel) {
       moduleArray.push('node-pixel');
@@ -113,6 +132,14 @@ module.exports = generators.Base.extend({
 
     this.npmInstall(moduleArray.join(' '), {
       'save': true
+    });
+
+    if (this.testing === 'includeNodeUnit') {
+      devModuleArray.push('nodeunit');
+    }
+
+    this.npmInstall(devModuleArray.join(' '), {
+      'save-dev': true
     });
   }
 });
