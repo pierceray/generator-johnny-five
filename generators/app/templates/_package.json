@@ -8,7 +8,7 @@
     "url": ""
   },
   "dependencies": {
-  }<% if (testing === 'includeNodeUnit'){ %>,
+  }<% if (testing === "includeNodeUnit"){ %>,
   "scripts": {
     "test": "./node_modules/nodeunit/bin/nodeunit test"
   }<% } %>

@@ -1,5 +1,5 @@
 var five = require("johnny-five"); <%
-if (projectType === 'useParticle') { %>
+if (projectType === "useParticle") { %>
 var board = new five.Board({
   io: new Spark({
     token: process.env.SPARK_TOKEN,
@@ -7,7 +7,7 @@ var board = new five.Board({
   });
 }); <% }
 
-if (projectType === 'useRasPi') { %>
+if (projectType === "useRasPi") { %>
   var board = new five.Board({
     io: new Raspi()
   });
@@ -73,7 +73,7 @@ if (includej5Songs) { %>
   // j5-songs
   var piezo = new five.Piezo(3);
   // Load a song object
-  var song = songs.load('never-gonna-give-you-up');
+  var song = songs.load("never-gonna-give-you-up");
 
   // Play it !
   piezo.play(song);
