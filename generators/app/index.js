@@ -113,6 +113,9 @@ module.exports = generators.Base.extend({
 
     var moduleArray = ['johnny-five'];
     var devModuleArray = [];
+    if (this.projectType === 'useParticle') {
+      moduleArray.push('spark-io');
+    }
 
     if (this.includeNodePixel) {
       moduleArray.push('node-pixel');

@@ -1,11 +1,15 @@
-var five = require("johnny-five"); <%
+var five = require("johnny-five");<%
 if (projectType === "useParticle") { %>
+var Spark = require("spark-io");
 var board = new five.Board({
+  // Create Johnny-Five board connected via Spark.
+  // Assumes access tokens are stored as environment variables
+  // but you can enter them directly below instead.
   io: new Spark({
     token: process.env.SPARK_TOKEN,
     deviceId: process.env.SPARK_DEVICE_ID
-  });
-}); <% }
+  })
+});<% }
 
 if (projectType === "useRasPi") { %>
   var board = new five.Board({
@@ -87,6 +91,6 @@ if (includej5Songs) { %>
 if (!(includej5Songs || includeOledJS || includeNodePixel)) { %>
 
   var led = new five.Led(13);
-  led.blink(500); <%
+  led.blink(500);<%
 } %>
 });
