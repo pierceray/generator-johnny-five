@@ -80,7 +80,7 @@ if (includej5Songs) { %>
 
   // List all songs
   songs.list(function (err, tunes) {
-  s// Object literal with all the songs
+  // Object literal with all the songs
   });
 <% }
 
