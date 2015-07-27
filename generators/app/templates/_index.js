@@ -6,12 +6,10 @@ var board = new five.Board({
   // Assumes access tokens are stored as environment variables
   // but you can enter them directly below instead.
   io: new Spark({
-    token: process.env.SPARK_TOKEN,
-    deviceId: process.env.SPARK_DEVICE_ID
+    token: <%- sparkToken ? '"' + sparkToken + '"': 'process.env.SPARK_TOKEN'; %>,
+    deviceId: <%- sparkDeviceID ? '"' + sparkDeviceID + '"': 'process.env.SPARK_DEVICE_ID'; %>
   })
-});<% }
-
-if (projectType === "useRasPi") { %>
+});<% } else if (projectType === "useRasPi") { %>
   var board = new five.Board({
     io: new Raspi()
   });
@@ -88,9 +86,13 @@ if (includej5Songs) { %>
   });
 <% }
 
-if (!(includej5Songs || includeOledJS || includeNodePixel)) { %>
+if (!(includej5Songs || includeOledJS || includeNodePixel)) {
 
+  if (projectType === "useParticle") { %>
+  var led = new five.Led("D7");
+  <% } else {%>
   var led = new five.Led(13);
+  <% } %>
   led.blink(500);<%
 } %>
 });
