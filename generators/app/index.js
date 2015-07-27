@@ -36,12 +36,16 @@ module.exports = generators.Base.extend({
       type: 'input',
       name: 'sparkToken',
       message: 'What is your Particle Access token string?',
-      when: function( answers ){ return answers.projectType === 'useParticle'; }
+      when: function(answers) {
+        return answers.projectType === 'useParticle';
+      }
     }, {
       type: 'input',
       name: 'sparkDeviceID',
       message: 'What is your Particle device id string?',
-      when: function( answers ){ return answers.projectType === 'useParticle'; }
+      when: function(answers) {
+        return answers.projectType === 'useParticle';
+      }
     }, {
       type: 'checkbox',
       name: 'features',
