@@ -33,6 +33,20 @@ module.exports = generators.Base.extend({
         value: 'useRasPi'
       }]
     }, {
+      type: 'input',
+      name: 'sparkToken',
+      message: 'What is your Particle Access token string?',
+      when: function(answers) {
+        return answers.projectType === 'useParticle';
+      }
+    }, {
+      type: 'input',
+      name: 'sparkDeviceID',
+      message: 'What is your Particle device id string?',
+      when: function(answers) {
+        return answers.projectType === 'useParticle';
+      }
+    }, {
       type: 'checkbox',
       name: 'features',
       message: 'What additional libraries would you like installed with your project?',
@@ -85,6 +99,10 @@ module.exports = generators.Base.extend({
       this.includeNodePixel = hasFeature('includeNodePixel');
       this.includeOledJS = hasFeature('includeOledJS');
       this.testing = answers.testing;
+      if (this.projectType === 'useParticle') {
+        this.sparkToken = answers.sparkToken;
+        this.sparkDeviceID = answers.sparkDeviceID;
+      }
 
       this.pkgJsonName = _s.slugify(this.appname);
 
@@ -113,6 +131,9 @@ module.exports = generators.Base.extend({
 
     var moduleArray = ['johnny-five'];
     var devModuleArray = [];
+    if (this.projectType === 'useParticle') {
+      moduleArray.push('spark-io');
+    }
 
     if (this.includeNodePixel) {
       moduleArray.push('node-pixel');
