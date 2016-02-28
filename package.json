@@ -1,6 +1,6 @@
 {
   "name": "generator-johnny-five",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Yeoman generator that scaffolds out a Johnny-Five project",
   "license": "MIT",
   "bugs": {
