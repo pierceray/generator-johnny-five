@@ -4,7 +4,7 @@ default:
 lint:
     description: 'Runs the JSBeautifier and JSHint tasks.'
     tasks:
-    - 'jshint'
+    - 'eslint'
     - 'jsbeautifier:verify'
 
 test:

@@ -1,3 +1,5 @@
+'use strict'
+
 var jsbFiles = [
   'Gruntfile.js',
   'grunt/**/*.js',
