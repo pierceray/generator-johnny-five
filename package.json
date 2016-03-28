@@ -31,7 +31,7 @@
     "oled-js"
   ],
   "dependencies": {
-    "chalk": "^1.1.1",
+    "chalk": "^1.1.2",
     "underscore.string": "^3.2.2",
     "yeoman-generator": "^0.22.5",
     "yosay": "^1.1.0"
