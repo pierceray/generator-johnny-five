@@ -8,8 +8,11 @@
     "url": ""
   },
   "dependencies": {
-  }<% if (testing === "includeNodeUnit"){ %>,
+  },
   "scripts": {
+    "lint": "./node_modules/jshint/bin/jshint index.js"<% if (testing === "includeNodeUnit"){ %>,
+    "pretest": "npm run lint",
     "test": "./node_modules/nodeunit/bin/nodeunit test"
-  }<% } %>
+    <% } %>
+  }
 }

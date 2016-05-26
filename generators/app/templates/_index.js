@@ -16,20 +16,16 @@ var board = new five.Board({
 <% } else { %>
 var board = new five.Board();
 <% }
-
 if (includeBarcli) { %>
 var Barcli = require("barcli");
 <% }
-
 if (includej5Songs) { %>
 var songs = require("j5-songs");
 <% }
-
 if (includeNodePixel) { %>
 var pixel = require("node-pixel");
 var strip = null;
 <% }
-
 if (includeOledJS) { %>
 var Oled = require("oled-js");
 <% } %>
@@ -39,6 +35,7 @@ var Oled = require("oled-js");
 board.on("ready", function () {
   console.log("Ready!");
 <% if (includeBarcli) { %>
+  // See https://github.com/dtex/barcli for usage
   var graph = new Barcli();
   // Sets bar to 25%
   graph.update(0.25);
@@ -54,7 +51,11 @@ if (includeOledJS) { %>
     address: 0x3D
   };
 
+  // Instance of Oled
   var oled = new Oled(board, five, opts);
+
+  // See https://github.com/noopkat/oled-js for usage.
+  oled.clearDisplay();
 <% }
 
 if (includeNodePixel) { %>
@@ -68,6 +69,7 @@ if (includeNodePixel) { %>
 
   strip.on("ready", function () {
     // do stuff with the strip here.
+    // See https://github.com/ajfisher/node-pixel for usage
   });
 <% }
 
@@ -76,14 +78,10 @@ if (includej5Songs) { %>
   var piezo = new five.Piezo(3);
   // Load a song object
   var song = songs.load("never-gonna-give-you-up");
+  // See https://github.com/julianduque/j5-songs for more songs and usage
 
   // Play it !
   piezo.play(song);
-
-  // List all songs
-  songs.list(function (err, tunes) {
-  // Object literal with all the songs
-  });
 <% }
 
 if (!(includej5Songs || includeOledJS || includeNodePixel)) {

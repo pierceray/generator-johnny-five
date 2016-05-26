@@ -1,3 +1,5 @@
+.editorconfig
+.eslintrc
 .gitignore
 .jshintrc
 .travis.yml

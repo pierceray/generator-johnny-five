@@ -11,8 +11,6 @@ module.exports = generators.Base.extend({
   },
 
   prompting: function() {
-    var done = this.async();
-
     // Have Yeoman greet the user.
     this.log(yosay(
       'Welcome to the ' + chalk.red('Johnny-Five') + ' generator!'
@@ -85,45 +83,62 @@ module.exports = generators.Base.extend({
       default: 'MIT'
     }];
 
-    this.prompt(prompts, function(answers) {
-      var features = answers.features;
+    return this.prompt(prompts)
+      .then(function(answers) {
+        var features = answers.features;
 
-      function hasFeature(feat) {
-        return features && features.indexOf(feat) !== -1;
-      }
+        function hasFeature(feat) {
+          return features && features.indexOf(feat) !== -1;
+        }
 
-      this.licenseType = answers.licenseType;
-      this.projectType = answers.projectType;
-      this.includeBarcli = hasFeature('includeBarcli');
-      this.includej5Songs = hasFeature('includej5Songs');
-      this.includeNodePixel = hasFeature('includeNodePixel');
-      this.includeOledJS = hasFeature('includeOledJS');
-      this.testing = answers.testing;
-      if (this.projectType === 'useParticle') {
-        this.sparkToken = answers.sparkToken;
-        this.sparkDeviceID = answers.sparkDeviceID;
-      }
+        this.licenseType = answers.licenseType;
+        this.projectType = answers.projectType;
+        this.includeBarcli = hasFeature('includeBarcli');
+        this.includej5Songs = hasFeature('includej5Songs');
+        this.includeNodePixel = hasFeature('includeNodePixel');
+        this.includeOledJS = hasFeature('includeOledJS');
+        this.testing = answers.testing;
+        if (this.projectType === 'useParticle') {
+          this.sparkToken = answers.sparkToken;
+          this.sparkDeviceID = answers.sparkDeviceID;
+        }
 
-      this.pkgJsonName = _s.slugify(this.appname);
-
-      done();
-    }.bind(this));
+        this.pkgJsonName = _s.slugify(this.appname);
+      }.bind(this));
   },
 
-  writing: {
-    app: function() {
-      this.template('_package.json', 'package.json');
-      this.template('_index.js', 'index.js');
-    },
+  writing: function() {
+    // package.json
+    this.fs.copyTpl(
+      this.templatePath('_package.json'),
+      this.destinationPath('package.json'),
+      this
+    );
 
-    projectfiles: function() {
-      this.copy('jshintrc', '.jshintrc');
-    },
+    // main file for j5 applicaiton
+    this.fs.copyTpl(
+      this.templatePath('_index.js'),
+      this.destinationPath('index.js'),
+      this
+    );
 
-    testing: function() {
-      if (this.testing === 'includeNodeUnit') {
-        this.copy('_nodeunittests.js', 'test/' + this.pkgJsonName + '-tests.js');
-      }
+    // jshint files for the j5 app
+    this.fs.copy(
+      this.templatePath('jshintrc'),
+      this.destinationPath('.jshintrc')
+    );
+
+    this.fs.copy(
+      this.templatePath('jshintignore'),
+      this.destinationPath('.jshintignore')
+    );
+
+    // Node Unit
+    if (this.testing === 'includeNodeUnit') {
+      this.fs.copy(
+        this.templatePath('_nodeunittests.js'),
+        this.destinationPath('test/' + this.pkgJsonName + '-tests.js')
+      );
     }
   },
 
@@ -154,6 +169,8 @@ module.exports = generators.Base.extend({
     this.npmInstall(moduleArray.join(' '), {
       'save': true
     });
+
+    devModuleArray.push('jshint');
 
     if (this.testing === 'includeNodeUnit') {
       devModuleArray.push('nodeunit');

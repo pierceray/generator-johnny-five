@@ -11,3 +11,8 @@ test:
   description: 'Do all the things to prevent the code from breaking.'
   tasks:
   - 'lint'
+
+jsb:
+  description: 'Alias to jsbeautifier:write'
+  tasks:
+  - 'jsbeautifier:write'
