@@ -1,6 +1,9 @@
 'use strict'
 
 module.exports = {
+  options: {
+    fix: true
+  },
   all: [
     'Gruntfile.js',
     'grunt/**/*.js',
